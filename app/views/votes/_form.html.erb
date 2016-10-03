@@ -1,0 +1,11 @@
+<strong>Write a Review</strong>
+<%= form_for [@recipe, @vote] do |f| %>
+  <%= f.hidden_field :value, id: "value" %>
+  <%= voting_form_for(@recipe) do |css_id,css_class, data_value, data_form_id| %>
+	<%= content_tag(:li,"", class: css_class, id: css_id, data: {value: data_value, form_id: data_form_id}) %>
+  <% end %>
+  <div class="form-group">
+	<%= f.text_area :content, class: "form-control", rows: 3 %>
+  </div>
+  <div class="action"><%= f.submit("Submit",class: "btn btn-default") %></div>
+<% end %>

@@ -1,0 +1,7 @@
+<div class="col-md-10 col-md-offset-1">
+<% if flash.any? %>
+  <% flash.each do |name, msg| %>
+    <%= content_tag "div", msg, class: "alert alert-#{name}" %>
+  <% end %>
+<% end %>
+</div>

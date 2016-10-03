@@ -1,0 +1,191 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+* {
+  padding: 0px;
+  margin: 0px;
+}
+.ingredients, .directions {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  border: 1px #5effbe solid;
+  padding: 10px;
+  margin-bottom: 20px;
+  height: 350px;
+  overflow: auto;
+  .add_field {margin: 10px 0;}
+}
+.main_body {
+  min-height: 500px;
+}
+.direction_list {
+  margin-left: 15px;
+  line-height: 24px;
+  text-align: justify;
+}
+.recipe_description {
+  p {
+	margin-top: 15px;
+	line-height: 30px;
+	text-align: justify;
+  }
+}
+.action {
+  display: block;
+}
+#rating {
+  overflow: inline-block;
+  height: 25px;
+  ul {
+    display: inline-block;
+    overflow: auto;
+  }
+  .rating_star {
+	float: left;
+	display: block;
+	background: url(asset-path("star-off")) 0 0;
+	width: 16px;
+	height: 16px;
+  }
+  .rating_star:hover{
+	cursor: pointer;
+  }
+  .on { background: url(asset-path("star-on.png")) 0 0; }
+} 
+.vote_list {
+  ul {display: inline-block;}
+  .current_star {
+	float: left;
+	display: block;
+	background: url(asset-path("star-off")) 0 0;
+	width: 16px;
+	height: 16px;
+  }
+  .on { background: url(asset-path("star-on.png")) 0 0; }
+  .half { background: url(asset-path("star-half.png")) 0 0; }
+  strong { 
+	float: left; 
+	padding-right: 10px;
+  }
+}
+.introduction {
+  margin-bottom: 40px;
+}
+#vote {
+  border-bottom: 1px black solid;
+  margin-bottom: 10px;
+}
+.gallery {
+  width: 100%;
+  display: inline-block;
+  h1 {
+	text-align: center; 
+	padding-bottom: 20px;
+  }
+  .recipe-row{
+	float: left;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 20%;
+	margin: 20px calc(20%/8);
+    .recipe {
+	  border: 1px blue solid;
+	  width: 224px;
+	  height: 360px;
+	  margin: 0 auto;
+	  overflow: hidden;
+	  display: relative;
+	  div {
+	    display: absolute;
+	    bottom: 0;
+	    p {
+		  text-align: center;
+		  a { text-decoration: none; }
+		}
+	  }
+	  img {
+	    display: block;
+		border-bottom: 1px blue solid;
+	  }
+	  img:hover {
+	    width: 300px;
+		max-height: 500px;
+	  }
+    }
+  }
+}
+@media screen and (max-width: 1250px) {
+  .gallery {
+    .recipe-row {
+	  width: 30%;
+	  margin: 20px calc(10%/6);
+	}
+  }
+}
+@media screen and (max-width: 1050px) {
+  .gallery {
+    .recipe-row {
+	  width: 40%;
+	  margin: 20px calc(20%/4);
+	}
+  }
+}
+@media screen and (max-width: 600px) {
+  .gallery {
+    .recipe-row {
+	  width: 90%;
+	  margin: 20px 5%;
+	}
+  }
+}
+.best_recipes {
+  text-align: center;
+  ul {
+	display: inline-block;
+	text-align: center;
+	width: 100%;
+	li {
+	  width: 20%;
+	  display: inline-block;
+	  a { text-decoration: none; }
+	}
+  }
+}
+.footer {
+  height: 80px;
+  background: #6e846b;
+  margin-top: 10px;
+  text-align: center;
+  padding-top: 30px;
+  ul {
+	display: inline-block;
+	text-align: center;
+	li {
+	  display: inline-block;
+	  margin: 0 10px;
+	  a {
+		color: white;
+		text-decoration: none;
+	  }
+	  a:hover {
+		color: black;
+	  }
+	}
+  }
+}

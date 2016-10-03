@@ -1,0 +1,16 @@
+<div class="gallery">
+<h1 class="text-center">Recipes index</h1>
+<% @recipes.each do |recipe| %>
+  <div class="recipe-row">
+	<div class="recipe">
+	  <%= link_to image_tag(recipe.image_url(:thumb).to_s), recipe %>
+	  <div class="vote_list">
+		<%= current_star_for(recipe.cahed_avarage_vote) do |class_css| %>
+		  <%= content_tag(:li,"", class: class_css) %>
+		<% end %>
+	  </div>
+	  <div><p><%= link_to recipe.title, recipe %></p></div>
+	</div>
+  </div>
+<% end %>
+</div>

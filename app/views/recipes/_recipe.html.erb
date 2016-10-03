@@ -1,0 +1,6 @@
+<div class="col-md-10 col-md-offset-1">
+  <h2><%= link_to post.title, post %></h2>
+  <p><%= link_to post.user.username, post.user %>  <%= post.created_at.strftime("%B %d, %Y") %></p>
+  <p><%= pluralize post.all_comments.size, "comment" %></p>
+  <p><%= truncate post.content, length: 300 %></p>
+</div>

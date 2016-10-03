@@ -1,0 +1,13 @@
+<div id="vote">
+<%= current_star_for(vote.value) do |class_css| %>
+  <%= content_tag(:li,"", class: class_css) %>
+<% end %>
+<p><strong><%= vote.cached_user.email %></strong> said: </p>
+<p><%= vote.content %></p>
+<% if allow_action? :edit, :votes, vote %>
+  <%= link_to "Edit", edit_recipe_vote_path(vote.recipe, vote), class: "btn btn-default btn-sm" %>
+<% end %>
+<% if allow_action? :destroy, :votes, vote %>
+  <%= link_to "Delete", recipe_vote_path(vote.recipe, vote), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-sm" %>
+<% end %>
+</div>

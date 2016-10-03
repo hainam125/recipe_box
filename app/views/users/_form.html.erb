@@ -1,0 +1,28 @@
+<%= form_for @user do |f| %>
+  <%= render "shared/error", object: @user %>
+  <% if allow_params?(:user, :admin) %>
+	<div class="check_box">
+	  <%= f.check_box :admin %>
+	  <%= f.label :admin, "Set Admin" %>
+	</div>
+  <% end %>
+  <% if allow_params?(:user, :email) %>
+	<div class="form-group">
+	  <%= f.label :email %><br/>
+	  <%= f.text_field :email, class: "form-control" %>
+	</div>
+  <% end %>
+  <% if allow_params?(:user, :password) %>
+	<div class="form-group">
+	  <%= f.label :password %><br/>
+	  <%= f.password_field :password, class: "form-control" %>
+	</div>
+  <% end %>
+  <% if allow_params?(:user, :password_confirmation) %>
+	<div class="form-group">
+	  <%= f.label :password_confirmation %><br/>
+	  <%= f.password_field :password_confirmation, class: "form-control" %>
+	</div>
+  <% end %>
+  <%= f.submit((yield :button), class: "btn btn-default") %>
+<% end %>

@@ -1,0 +1,49 @@
+<% @title = @recipe.title %>
+<h1 class="text-center"><%= @recipe.title %></h1>
+<div class="row introduction">
+  <div class="col-md-4 col-sm-4">
+	<%= image_tag @recipe.image_url(:thumb).to_s %>
+	<div class="vote_list">
+	<%= current_star_for(@recipe.cahed_avarage_vote) do |class_css| %>
+	  <%= content_tag(:li,"", class: class_css) %>
+	<% end %>
+	<strong><%= pluralize(@recipe.cached_vote_count, "Rating") %>: <%= @recipe.cahed_avarage_vote %></strong>
+	</div>
+  </div>
+  <div class="col-md-8 col-sm-8 recipe_description">
+	<%= link_to "Back", root_path, class: "btn btn-default" %>
+	<%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-default" if allow_action? :edit, :recipes, @recipe %>
+	<%= link_to "Delete", recipe_path(@recipe), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default" if allow_action? :delete, :recipes %>
+	<p><%= @recipe.description %></p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+	<h3>Ingredients</h3>
+	<% @recipe.cached_ingredients.each do |ingredient| %>
+	  <p><%= ingredient.name %></p>
+	<% end %>
+  </div>
+  <div class="col-md-6">
+	<h3>Directions</h3>
+	<ol class="direction_list">
+	<% @recipe.cached_directions.each do |direction| %>
+	  <li><%= direction.name %></li>
+	<% end %>
+	</ol>
+  </div>
+</div>
+<div class="row review">
+  <%= render "votes/form" %>
+  <div class="vote_list"><%= render @recipe.cached_votes %></div>
+</div>
+<div class="row">
+  <div class="best_recipes">
+	<h4>You may want to see</h4>
+	<ul>
+	<% @best_recipes.each do |recipe| %>
+	  <li><%= link_to recipe.title, recipe %></li>
+	<% end %>
+	</ul>
+  </div>
+</div>

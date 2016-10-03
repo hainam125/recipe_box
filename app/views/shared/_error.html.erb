@@ -1,0 +1,9 @@
+<% if object.errors.any? %>
+  <br/>
+  <h4 class="list-group-item-heading"><%= pluralize(object.errors.size, "error")%> prevent this from being saved:</h4>
+  <ul class="list-group">
+	<% object.errors.full_messages.each do |msg| %>
+	  <li class="list-group-item list-group-item-warning"><%= msg %></li>
+	<% end %>
+  </ul>
+<% end %>

@@ -1,0 +1,11 @@
+<div>
+<strong>Email:</strong><%= link_to user.email, user %>
+<% if current_user && !current_user?(user) && current_user.admin? %>
+  <% if current_user && current_user.admin? && (allow_action? :edit, :users) %>
+	<%= link_to "Edit", edit_user_path(user) %>
+  <% end %>
+  <% if allow_action? :delete, :users %>
+	<%= link_to "Delete", user_path(user), method: :delete, data: { confirm: "Are you sure?"} %>
+  <% end %>
+<% end %></p>
+</div>
