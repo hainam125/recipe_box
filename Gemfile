@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '4.2.5.1'
 gem 'sass-rails', '~> 5.0'
@@ -16,7 +16,10 @@ gem 'devise', '~> 4.1', '>= 4.1.1'
 gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
 gem "mini_magick"
 
+gem 'public_activity', '~> 1.5'
+
 group :development, :test do
+	gem 'letter_opener', '~> 1.4'
   gem 'rack-mini-profiler'
   gem 'sqlite3'
   gem 'byebug'

@@ -3,30 +3,32 @@ class VotesController < ApplicationController
   before_action :find_vote, only: [:update,:edit, :update, :destroy]
   
   def create
-	@vote = @recipe.votes.build(votes_params)
-	@vote.user = current_user
-	respond_to do |format|
-	  if @vote.save
-		format.js
-	  else
-		flash[:warning] = "Something wrong!"
-	  end
-	  format.html {redirect_to @recipe }
-	end
+		@vote = @recipe.votes.build(votes_params)
+		@vote.user = current_user
+		respond_to do |format|
+		  if @vote.save
+		  	@vote.create_activity :create, owner: current_user
+				format.js
+		  else
+				flash[:warning] = "Something wrong!"
+		  end
+		  format.html {redirect_to @recipe }
+		end
   end
   
   def edit
   
   end
   def update
-	respond_to do |format|
-	  if @vote.update_attributes(votes_params)
-		format.js
-	  else
-		flash[:warning] = "Something wrong!"
-	  end
-	  format.html {redirect_to @recipe }
-	end
+		respond_to do |format|
+		  if @vote.update_attributes(votes_params)
+			  @vote.create_activity :update, owner: current_user
+				format.js
+		  else
+				flash[:warning] = "Something wrong!"
+		  end
+		  format.html {redirect_to @recipe }
+		end
   end
   
   def destroy

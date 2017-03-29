@@ -1,0 +1,6 @@
+update vote 
+<% if activity.trackable %>
+  <%= link_to activity.trackable.recipe.title, activity.trackable.recipe %>
+<% else %>
+	which have been remove
+<% end %>

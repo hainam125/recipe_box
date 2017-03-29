@@ -1,4 +1,7 @@
 class Recipe < ActiveRecord::Base
+  include PublicActivity::Model
+  tracked owner: ->(controller, model) { controller && controller.current_user }
+
   has_many :votes, dependent: :destroy
   has_many :voting_users, through: :votes, source: :user
   belongs_to :creating_users, class_name: "User", foreign_key: :user_id
